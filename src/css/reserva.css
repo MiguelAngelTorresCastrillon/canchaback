@@ -1,0 +1,207 @@
+/* Variables de color y fuentes (opcional pero recomendado) */
+:root {
+  --primary-color: #000000; /* Azul vibrante */
+  --primary-color-dark: #000000;
+  --secondary-color: #6c757d; /* Gris secundario */
+  --light-gray: #f8f9fa;
+  --border-color: #dee2e6;
+  --text-color: #343a40;
+  --card-bg: #ffffff;
+  --input-bg: #ffffff;
+  --input-border: #ced4da;
+  --success-color: #28a745;
+
+  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --border-radius: 0.5rem; /* 8px */
+  --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+body {
+  font-family: var(--font-family-sans-serif);
+  background-color: var(--light-gray);
+  color: var(--text-color);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.reserva-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Alinea al inicio para ver el header si lo hubiera */
+  min-height: 100vh;
+  padding: 2rem 1rem; /* Espacio en móviles y general */
+  box-sizing: border-box;
+}
+
+.reserva-content-wrapper {
+  width: 100%;
+  max-width: 1200px; /* Un poco más ancho para pantallas grandes */
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem; /* Espacio entre tarjetas */
+  margin-top: 1rem; /* Espacio desde el top de la página */
+}
+
+/* Estilo para las tarjetas */
+.reserva-card {
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--border-color);
+}
+
+
+.cancha-image-placeholder {
+  width: 100%;
+  height: 200px; /* Altura aumentada para mejor visual */
+  background-color: #e9ecef;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: calc(var(--border-radius) - 4px); /* Un poco menos que la tarjeta */
+  margin-bottom: 1.5rem;
+  border: 1px dashed #ced4da;
+  color: var(--secondary-color);
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+.cancha-details h2 {
+  font-size: 1.75rem; /* Más grande */
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.cancha-details .cancha-precio {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--primary-color);
+  margin-bottom: 0.25rem;
+}
+
+.cancha-details .cancha-capacidad {
+  font-size: 0.95rem;
+  color: var(--secondary-color);
+  margin-bottom: 1.5rem; /* Espacio antes de los selectores */
+}
+
+.datetime-selector-group {
+  margin-top: 1.5rem; /* Espacio entre info de cancha y selectores */
+}
+
+.datetime-section {
+  background-color: var(--light-gray); /* Fondo sutil para agrupar */
+  border: 1px solid var(--border-color);
+  border-radius: calc(var(--border-radius) - 2px);
+  padding: 1rem;
+  margin-bottom: 1rem; /* Espacio entre selector de fecha y hora */
+}
+
+.datetime-section:last-child {
+  margin-bottom: 0;
+}
+
+.datetime-label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #495057;
+}
+
+
+.reserva-form-card h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: var(--text-color);
+}
+
+.reserva-form-card .form-subtitle {
+  font-size: 0.9rem;
+  color: var(--secondary-color);
+  margin-bottom: 1.5rem;
+}
+
+.reserva-form .form-group {
+  margin-bottom: 1rem; /* Espacio entre campos del formulario */
+}
+
+.form-input,
+.datetime-input { /* Aplicar a inputs de fecha/hora también */
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--text-color);
+  background-color: var(--input-bg);
+  background-clip: padding-box;
+  border: 1px solid var(--input-border);
+  border-radius: calc(var(--border-radius) - 2px);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  box-sizing: border-box; /* Importante para que el padding no aumente el tamaño */
+}
+
+.form-input::placeholder {
+  color: #6c757d;
+  opacity: 1;
+}
+
+.form-input:focus,
+.datetime-input:focus {
+  color: var(--text-color);
+  background-color: var(--input-bg);
+  border-color: var(--primary-color); /* Azul al enfocar */
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.submit-button {
+  display: inline-block;
+  font-weight: 500;
+  color: #ffffff;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: var(--border-radius);
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, transform 0.15s ease;
+  width: 100%; /* Botón ancho completo */
+  margin-top: 1rem; /* Espacio arriba del botón */
+}
+
+.submit-button:hover {
+  background-color: var(--primary-color-dark);
+  border-color: var(--primary-color-dark);
+  transform: translateY(-2px); /* Ligero efecto de elevación */
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.submit-button:focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.5);
+}
+
+.submit-button:active {
+  transform: translateY(0);
+  box-shadow: var(--card-shadow);
+}
+
+/* Responsive: Dos columnas en pantallas medianas y grandes */
+@media (min-width: 768px) { /* md breakpoint de Tailwind */
+  .reserva-content-wrapper {
+    grid-template-columns: 1fr 1fr; /* Dos columnas iguales */
+    gap: 2.5rem; /* Aumentar un poco el gap */
+  }
+  .reserva-page-container {
+    padding: 3rem 2rem; /* Mayor padding en pantallas grandes */
+  }
+}

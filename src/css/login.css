@@ -1,0 +1,93 @@
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+  }
+  
+  .login-box {
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    background-color: #fff;
+  }
+  
+  .login-box h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-family: sans-serif;
+  }
+  
+  .login-box label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    font-size: 14px;
+  }
+  
+  .login-box input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 1.2rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  
+  .login-box button {
+    width: 100%;
+    padding: 10px;
+    background-color: #111;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .login-box button:hover {
+    background-color: #333;
+  }
+  
+  .login-box .forgot {
+    display: block;
+    margin-top: 1rem;
+    text-align: left;
+    font-size: 13px;
+    color: #666;
+    text-decoration: none;
+  }
+  
+  .login-box .forgot:hover {
+    text-decoration: underline;
+  }
+  
+  .error {
+    color: red;
+    font-size: 13px;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .register-btn {
+    margin-top: 10px;
+    background-color: transparent;
+    border: 1px solid #333;
+    color: #333;
+    padding: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    transition: 0.3s;
+  }
+  
+  .register-btn:hover {
+    background-color: #333;
+    color: white;
+  }
+  

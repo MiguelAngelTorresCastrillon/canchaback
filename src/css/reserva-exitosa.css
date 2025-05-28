@@ -1,0 +1,47 @@
+.reserva-exitosa-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 2rem;
+  background-color: #fff;
+}
+
+.reserva-exitosa-container h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #000;
+}
+
+.reserva-exitosa-container p {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.success-icon {
+  width: 100px;
+  height: 100px;
+  stroke: #000;
+  stroke-width: 3px;
+  margin-bottom: 2rem;
+}
+
+.reserva-exitosa-button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.reserva-exitosa-button:hover {
+  background-color: #333;
+}
