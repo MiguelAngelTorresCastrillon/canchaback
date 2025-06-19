@@ -33,6 +33,7 @@ export default function Navbar() {
       <ul className={`navbar-links ${menuOpen ? 'active' : ''}`}>
         <li><a href="/contacto">Contacto</a></li>
         <li><a href="/canchas">Canchas</a></li>
+        <li><a href="/mis-reservas">Mis reservas</a></li>
 
         {isLoggedIn ? (
           <li>

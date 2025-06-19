@@ -1,0 +1,151 @@
+.reserva-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  background-color: var(--light-gray);
+}
+
+.reserva-content-wrapper {
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.reserva-card {
+  width: 100%;
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--border-color);
+}
+
+/* Título principal */
+.reserva-card h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: var(--primary-color);
+}
+
+/* Formulario de búsqueda de correo */
+.reserva-card input[type="email"] {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto 1rem auto;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid var(--input-border);
+  border-radius: var(--border-radius);
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.reserva-card .submit-button {
+  width: 100%;
+  max-width: 200px;
+  margin: 0 auto;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.75rem;
+  border: none;
+  border-radius: var(--border-radius);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.reserva-card .submit-button:hover {
+  background-color: var(--primary-color-dark);
+  transform: translateY(-2px);
+}
+
+/* Mensajes informativos */
+.reserva-card p {
+  text-align: center;
+  font-size: 1rem;
+  color: var(--secondary-color);
+}
+
+/* Tabla de reservas */
+table {
+  width: 100%;
+  margin-top: 1rem;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+table th,
+table td {
+  padding: 0.75rem;
+  text-align: center;
+  border: 1px solid var(--border-color);
+}
+
+thead {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/* Inputs dentro de celdas editables */
+table input[type="text"],
+table input[type="number"],
+table input[type="email"],
+table input[type="datetime-local"] {
+  width: 100%;
+  padding: 0.4rem;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--input-border);
+  font-size: 0.95rem;
+}
+
+/* Botones dentro de la tabla */
+.btn {
+  font-size: 0.85rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 0.4rem;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-warning {
+  background-color: #ffc107;
+  color: #212529;
+}
+
+.btn-warning:hover {
+  background-color: #e0a800;
+}
+
+.btn-success {
+  background-color: var(--success-color);
+  color: white;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+/* Botón volver a canchas */
+.mt-4.submit-button {
+  margin-top: 2rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

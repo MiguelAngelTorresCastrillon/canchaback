@@ -8,6 +8,8 @@ import Contacto from './pages/contacto';
 import Reserva from './pages/reserva';
 import ReservaExitosa from './pages/reserva-exitosa';
 import CanchaCreada from './pages/creada';
+import ReservaFecha from './pages/reserva-no-horarios'
+import MisReservas from './pages/MisReservas'
 
 function App() {
   return (
@@ -20,7 +22,10 @@ function App() {
         <Route path="/gestion" element={<Gestion/>} />
         <Route path="/contacto" element={<Contacto/>} />
         <Route path="/reserva" element={<Reserva/>} />
+        <Route path="/reserva-exitosa" element={<ReservaExitosa/>} />
         <Route path="/CanchaCreada" element={<CanchaCreada />} />
+        <Route path="/reserva-fecha" element={<ReservaFecha/>} />
+<Route path="/mis-reservas" element={<MisReservas />} />
 
 
 
