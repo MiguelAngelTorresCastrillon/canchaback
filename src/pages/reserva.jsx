@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
-import '../css/reserva.css'; 
+import '../css/reserva.css';
 
 export default function Reserva() {
   const location = useLocation();
@@ -13,9 +13,14 @@ export default function Reserva() {
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
 
+  // ✅ Obtenemos el nombre y correo del localStorage
+  const nombreUsuario = localStorage.getItem('nombreUsuario') || '';
+  const correoUsuario = localStorage.getItem('correoUsuario') || '';
+  const idUsuario = localStorage.getItem('idUsuario') || '';
+
   const [reserva, setReserva] = useState({
-    nombre: '',
-    correo: '',
+    nombre: nombreUsuario,
+    correo: correoUsuario,
     numeroContacto: '',
     fecha: '',
     hora: '',
@@ -52,10 +57,6 @@ export default function Reserva() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!reserva.canchaId) {
-      alert('Error: No se ha identificado la cancha para la reserva. Por favor, vuelve a la página de canchas y selecciona una.');
-      return;
-    }
     if (!reserva.fecha || !reserva.hora) {
       alert('Por favor, selecciona una fecha y hora para la reserva.');
       return;
@@ -64,11 +65,14 @@ export default function Reserva() {
     const horarioReserva = `${reserva.fecha}T${reserva.hora}:00`;
 
     const payload = {
-      ...reserva,
+      nombre: reserva.nombre,
+      correo: reserva.correo,
+      numeroContacto: reserva.numeroContacto,
+      cantidadPersonas: reserva.cantidadPersonas,
       horarioReserva,
-      canchaId: parseInt(reserva.canchaId, 10),
+      cancha: { id: parseInt(reserva.canchaId, 10) },
+      usuario: { id: parseInt(localStorage.getItem('idUsuario'), 10) } // <--- This line
     };
-
     try {
       const response = await axios.put('http://localhost:8080/api/reserva', payload);
 
@@ -91,20 +95,7 @@ export default function Reserva() {
     return (
       <div className="reserva-page-container">
         <p style={{ color: 'red', textAlign: 'center' }}>{errorMessage}</p>
-        <button onClick={() => navigate('/canchas')} className="submit-button" style={{marginTop: '1rem', width: 'auto'}}>
-          Volver a Canchas
-        </button>
-      </div>
-    );
-  }
-
-  if (!cancha) {
-    return (
-      <div className="reserva-page-container">
-        <p style={{ color: 'red', textAlign: 'center' }}>
-          No se pudieron cargar los detalles de la cancha seleccionada.
-        </p>
-        <button onClick={() => navigate('/canchas')} className="submit-button" style={{marginTop: '1rem', width: 'auto'}}>
+        <button onClick={() => navigate('/canchas')} className="submit-button" style={{ marginTop: '1rem', width: 'auto' }}>
           Volver a Canchas
         </button>
       </div>
@@ -118,21 +109,18 @@ export default function Reserva() {
         {/* Info Cancha */}
         <div className="reserva-card cancha-info-card">
           <div className="cancha-image-placeholder">
-          
-            {cancha?.imagenUrl ? (
-           <img src={cancha.imagen} alt={cancha.nombre} className="cancha-imagen" />
- ) : (
+            {cancha?.imagen ? (
+              <img src={cancha.imagen} alt={cancha.nombre} className="cancha-imagen" />
+            ) : (
               <span>{cancha?.nombre || 'Imagen no disponible'}</span>
             )}
           </div>
 
-          {cancha && (
-            <div className="cancha-details">
-              <h2>{cancha.nombre}</h2>
-              <p className="cancha-precio">${cancha.precio}/hr</p>
-              <p className="cancha-capacidad">Cancha apta para {cancha.capacidad} personas</p>
-            </div>
-          )}
+          <div className="cancha-details">
+            <h2>{cancha.nombre}</h2>
+            <p className="cancha-precio">${cancha.precio}/hr</p>
+            <p className="cancha-capacidad">Cancha apta para {cancha.capacidad} personas</p>
+          </div>
 
           <div className="datetime-selector-group">
             <div className="datetime-section">
@@ -147,7 +135,6 @@ export default function Reserva() {
                 required
               />
             </div>
-
             <div className="datetime-section">
               <label htmlFor="hora" className="datetime-label">Seleccionar hora</label>
               <input
@@ -169,26 +156,21 @@ export default function Reserva() {
           <p className="form-subtitle">Completa tus datos para finalizar.</p>
 
           <form onSubmit={handleSubmit} className="reserva-form">
+            {/* ✅ Mostramos nombre y correo fijos */}
             <div className="form-group">
               <input
                 type="text"
-                name="nombre"
-                placeholder="Nombre completo"
-                className="form-input"
                 value={reserva.nombre}
-                onChange={handleChange}
-                required
+                className="form-input"
+                disabled
               />
             </div>
             <div className="form-group">
               <input
                 type="email"
-                name="correo"
-                placeholder="Correo electrónico"
-                className="form-input"
                 value={reserva.correo}
-                onChange={handleChange}
-                required
+                className="form-input"
+                disabled
               />
             </div>
             <div className="form-group">

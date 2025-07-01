@@ -16,7 +16,7 @@ const Canchas = () => {
     setTipoUsuario(tipo);
     console.log(tipo);
 
-    
+
 
 
     axios.get('http://localhost:8080/api/cancha')
@@ -24,12 +24,27 @@ const Canchas = () => {
       .catch(err => console.error(err));
   }, []);
 
-  
+  useEffect(() => {
+  axios.get('http://localhost:8080/api/reportes/alerta')
+    .then(res => {
+      if (res.data) {
+        alert(`⚠️ Alerta: ${res.data.tipo} - ${res.data.mensaje}`);
+      }
+    })
+    .catch(err => console.error('Error al obtener la alerta:', err));
+}, []);
+
+
 
   return (
     <div className="canchas-container">
       <h2>Canchas Disponibles</h2>
 
+      {tipoUsuario === 2 && (
+        <button className="btn-crear-cancha" onClick={() => navigate('/gestion')}>
+          Gestionar
+        </button>
+      )}
 
 
       <div className="canchas-grid">
@@ -38,20 +53,15 @@ const Canchas = () => {
             <img src={cancha.imagen} alt={cancha.nombre} className="cancha-imagen" />
             <h3>{cancha.nombre}</h3>
             <p><strong>${cancha.precio}</strong>/hr</p>
-      {tipoUsuario === 2 && (
-        <button className="btn-crear-cancha" onClick={() => navigate('/gestion')}>
-        Gestionar
-        </button>
-)}
 
-{tipoUsuario === 1 && (
-  <button
-    className="btn-crear-cancha"
-    onClick={() => navigate('/reserva', { state: { canchaId: cancha.id, canchaNombre: cancha.nombre } })}
-  >
-    Reservar Cancha
-  </button>
-)}
+            {tipoUsuario === 1 && (
+              <button
+                className="btn-crear-cancha"
+                onClick={() => navigate('/reserva', { state: { canchaId: cancha.id, canchaNombre: cancha.nombre } })}
+              >
+                Reservar Cancha
+              </button>
+            )}
           </div>
         ))}
       </div>

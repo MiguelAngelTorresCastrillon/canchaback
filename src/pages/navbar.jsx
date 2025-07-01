@@ -42,7 +42,7 @@ export default function Navbar() {
         ) : (
           <>
             <li>
-              <button onClick={() => navigate('/login')} className="login-btn">Login</button>
+              <button onClick={() => navigate('/')} className="login-btn">Login</button>
             </li>
             <li>
               <button onClick={() => navigate('/register')} className="register-btn">Register</button>

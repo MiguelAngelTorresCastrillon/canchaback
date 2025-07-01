@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import '../css/login.css'; 
 
 const Register = () => {
   const [nombre, setNombre] = useState('');
+    const [correo, setCorreo] = useState('');
   const [contrasena, setContrasena] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
@@ -14,16 +16,18 @@ const Register = () => {
     try {
       const res = await axios.post('http://localhost:8080/register', {
         nombre,
+        correo,
         contrasena,
       });
       if (res.status === 200) {
         alert('Registro exitoso');
-        navigate('/login');
+        navigate('/');
       }
     } catch (err) {
       setError('Error al registrar usuario');
     }
   };
+
 
   return (
     <div className="login-container">
@@ -39,6 +43,13 @@ const Register = () => {
           value={nombre}
           onChange={(e) => setNombre(e.target.value)}
         />
+        <label>Correo</label>
+        <input
+          type="text"
+          placeholder="Correo"
+          value={correo}
+          onChange={(e) => setCorreo(e.target.value)}
+        />
 
         <label>Contraseña</label>
         <input
@@ -50,7 +61,7 @@ const Register = () => {
 
         <button onClick={handleRegister}>Registrarse</button>
 
-        <a href="/login" className="forgot">¿Ya tienes cuenta? Inicia sesión</a>
+        <a href="/" className="forgot">¿Ya tienes cuenta? Inicia sesión</a>
       </div>
     </div>
   );

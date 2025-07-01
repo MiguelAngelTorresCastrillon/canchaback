@@ -82,6 +82,12 @@ const GestionCanchas = () => {
   return (
     <div className="gestion-canchas">
       <h2>Gestión de Canchas</h2>
+        <button 
+        className="btn btn-primary" 
+        onClick={() => navigate('/reportes')}
+      >
+        Ver Reportes
+      </button>
 
       <div className="crear-form">
         <h3>{canchaForm.id ? 'Editar Cancha' : 'Crear Nueva Cancha'}</h3>
